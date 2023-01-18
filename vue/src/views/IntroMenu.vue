@@ -110,17 +110,6 @@
 
 
 <script>
-// import '../css/css-rtl/bootstrap.css';
-// import '../css/css-rtl/bootstrap-extended.css';
-// import '../css/css-rtl/colors.css';
-// import '../css/css-rtl/themes/dark-layout.css';
-// import '../css/css-rtl/bootstrap.css';
-// import '../css/css-rtl/bootstrap.css';
-// import '../css/menu.css';
-// import '../css/css-rtl/custom-rtl.css';
-// import '../css/style-rtl.css';
-// import '../css/custom-fonts.css'
-// import '../css/base.css'
 import anime from "animejs"
 import IntroComp from "../components/IntroComp.vue"
 
