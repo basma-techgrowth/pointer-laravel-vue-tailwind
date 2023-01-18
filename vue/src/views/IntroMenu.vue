@@ -12,11 +12,11 @@
         </label>
       </div>
       <ul>
-        <li><a href="#section1">Section </a></li>
-        <li><a href="#section2">Section </a></li>
-        <li><a href="#section3">Section </a></li>
-        <li><a href="#section4">Section </a></li>
-        <li><a href="#section5">Section </a></li>
+        <li v-for="item in navigation" :key="item.name">
+        <router-link :to="item.to">
+          {{ item.name }}
+        </router-link>
+      </li>
       </ul>
     </nav>
   </header>
@@ -53,55 +53,55 @@
       <div class="grim__item">
         <div class="grim__item-bg grim__item-bg--6"></div>
         <div class="grim__item-img grim__item-img--1"></div>
-        <a href="#content-2" class="grim__link grim__item-content">
+        <router-link to="/about-org" class="grim__link grim__item-content">
           <div class="grim__item-inner">
             <img class="image-logo" @load="imgLoaded" src="../assets/logo.jpeg">
           </div>
-        </a>
+        </router-link>
         <div class="grim__item-bg grim__item-bg-cover grim__item-bg--6"></div>
       </div>
       <div class="grim__item">
         <div class="grim__item-bg grim__item-bg--7"></div>
         <div class="grim__item-img grim__item-img--2"></div>
-        <a href="#content-3" class="grim__link grim__item-content">
+        <router-link to="/contact-us" class="grim__link grim__item-content">
           <div class="grim__item-inner">
             <h3 class="grim__item-title">تواصل معنا</h3>
             <span class="grim__item-desc">يمكنك التواصل معنا مباشرة</span>
           </div>
-        </a>
+        </router-link>
         <div class="grim__item-bg grim__item-bg-cover grim__item-bg--7"></div>
       </div>
       <div class="grim__item">
         <div class="grim__item-bg grim__item-bg--8"></div>
         <div class="grim__item-img grim__item-img--3"></div>
-        <a href="dashboard-region.html" class="grim__link grim__item-content">
+        <router-link to="/about-pointer" class="grim__link grim__item-content">
           <div class="grim__item-inner">
             <h3 class="grim__item-title">معلومات</h3>
             <span class="grim__item-desc">نبذة تعريفية عن مؤشر المعلوماتية</span>
           </div>
-        </a>
+        </router-link>
         <div class="grim__item-bg grim__item-bg-cover grim__item-bg--8"></div>
       </div>
       <div class="grim__item">
         <div class="grim__item-bg grim__item-bg--9"></div>
         <div class="grim__item-img grim__item-img--4"></div>
-        <a href="dashboard-region.html" class="grim__link grim__item-content">
+        <router-link to="/directory" class="grim__link grim__item-content">
           <div class="grim__item-inner">
             <h3 class="grim__item-title">الدليل</h3>
             <span class="grim__item-desc">دليل الوزارات والمؤسسات</span>
           </div>
-        </a>
+        </router-link>
         <div class="grim__item-bg grim__item-bg-cover grim__item-bg--9"></div>
       </div>
       <div class="grim__item">
         <div class="grim__item-bg grim__item-bg--10"></div>
         <div class="grim__item-img grim__item-img--5"></div>
-        <a href="wizard.html" class="grim__link grim__item-content">
+        <router-link to="/wizard" class="grim__link grim__item-content">
           <div class="grim__item-inner">
             <h3 class="grim__item-title">المؤشر</h3>
             <span class="grim__item-desc">مؤشر خاص لمواقع التواصل الإجتماعي</span>
           </div>
-        </a>
+        </router-link>
         <div class="grim__item-bg grim__item-bg-cover grim__item-bg--10"></div>
       </div>
     </nav>
@@ -110,17 +110,17 @@
 
 
 <script>
-import '../css/css-rtl/bootstrap.css';
-import '../css/css-rtl/bootstrap-extended.css';
-import '../css/css-rtl/colors.css';
-import '../css/css-rtl/themes/dark-layout.css';
-import '../css/css-rtl/bootstrap.css';
-import '../css/css-rtl/bootstrap.css';
-import '../css/menu.css';
-import '../css/css-rtl/custom-rtl.css';
-import '../css/style-rtl.css';
-import '../css/custom-fonts.css'
-import '../css/base.css'
+// import '../css/css-rtl/bootstrap.css';
+// import '../css/css-rtl/bootstrap-extended.css';
+// import '../css/css-rtl/colors.css';
+// import '../css/css-rtl/themes/dark-layout.css';
+// import '../css/css-rtl/bootstrap.css';
+// import '../css/css-rtl/bootstrap.css';
+// import '../css/menu.css';
+// import '../css/css-rtl/custom-rtl.css';
+// import '../css/style-rtl.css';
+// import '../css/custom-fonts.css'
+// import '../css/base.css'
 import anime from "animejs"
 import IntroComp from "../components/IntroComp.vue"
 
@@ -132,7 +132,13 @@ export default {
     return {
       imageLoadedStatus: false,
       Menu: null,
-      DomObj: {}
+      navigation: [
+      { name: 'الدليل', to: { name: 'Directory' }},
+      { name: 'المؤشر', to: { name: 'Wizard' }},
+      { name: 'تواصل معنا', to: { name: 'ContactUs' }},
+      { name: 'معلومات', to: { name: 'AboutApp' }},
+      { name: 'سمو شيخ سالم الصباح', to: { name: 'AboutOrg' }},
+    ]
     }
   },
   components: {
@@ -140,6 +146,7 @@ export default {
   },
   mounted: function () {
 
+   
     
     if (this.imgLoaded()) {
       let DOM = {};
@@ -150,6 +157,8 @@ export default {
         console.log("DOM.grim is not defined or available");
       }else{
         this.Menu = new Menu(DOM.grim);
+        // when page refreshes or goes back
+        this.Menu.close();
       }
       // DOM.grim.classList['add']('grim--open')
       // console.log(DOM.grim.classList['add']('grim--open'))
@@ -368,3 +377,17 @@ class Menu {
 
 
 </script>
+
+<style scoped>
+@import '../css/css-rtl/bootstrap.css';
+@import '../css/css-rtl/bootstrap-extended.css';
+@import '../css/css-rtl/colors.css';
+@import '../css/css-rtl/themes/dark-layout.css';
+@import '../css/css-rtl/bootstrap.css';
+@import '../css/css-rtl/bootstrap.css';
+@import '../css/menu.css';
+@import '../css/css-rtl/custom-rtl.css';
+@import '../css/style-rtl.css';
+@import '../css/custom-fonts.css';
+@import '../css/base.css';
+</style>

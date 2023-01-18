@@ -1,7 +1,6 @@
 <script setup>
-import IntroMenu from './views/IntroMenu.vue';
 </script>
 
 <template>
-  <IntroMenu/>
+  <router-view></router-view>
 </template>

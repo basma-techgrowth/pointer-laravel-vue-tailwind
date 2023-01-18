@@ -9,7 +9,7 @@ html {
 	background: #000;
 }
 
-body {
+:global(body) {
 	font-family: 'Barlow', Helvetica, Arial, sans-serif;
 	font-weight: 500;
 	min-height: 100vh;
