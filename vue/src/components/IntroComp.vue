@@ -76,28 +76,7 @@ export default {
     //const geometry = new THREE.BufferGeometry();
     var geometry = new THREE.IcosahedronGeometry(75,1);
 
-    // const vertex = new THREE.Vector3();
-    // for (var i = 0; i < geometry.attributes.position.count; i++) {
-    //   var vector = vertex.fromBufferAttribute(geometry.attributes.position, i);
-    //   vector._o = vector.clone();
-    // }
-
-    // function updatVertices(a) {
-    //   var count = geometry.attributes.position.count;
-    //   for (var i = 0; i < count; i++) {
-    //     var vector = vertex.fromBufferAttribute(geometry.attributes.position, i);
-    //     vector.copy(vector._o);
-    //     var perlin = noise.simplex3(
-    //       (vector.x * 0.006) + (a * 0.0002),
-    //       (vector.y * 0.006) + (a * 0.0003),
-    //       (vector.z * 0.006)
-    //     );
-    //     var ratio = ((perlin * 0.4 * (mouse.y + 0.3)) + 0.9);
-    //     vector.multiplyScalar(ratio);
-    //   }
-    //   geometry.attributes.position.needsUpdate = true;
-    // }
-
+ 
     var mouse = new THREE.Vector2(0.8, 0.5);
     function onMouseMove(e) {
       gsap.duration(mouse, 0.8, {
@@ -117,6 +96,12 @@ export default {
     function update() {
       Ico.rotation.x += 2 / 100;
       Ico.rotation.y += 2 / 100;
+      // window.addEventListener("mousemove", onMouseMove);
+      var resizeTm;
+      window.addEventListener("resize", function () {
+        resizeTm = clearTimeout(resizeTm);
+        resizeTm = setTimeout(onResize, 200);
+      });
     }
 
     function render() {
@@ -124,12 +109,7 @@ export default {
       renderer.render(scene, camera);
       // updatVertices(render)
       update();
-      // window.addEventListener("mousemove", onMouseMove);
-      // var resizeTm;
-      // window.addEventListener("resize", function () {
-      //   resizeTm = clearTimeout(resizeTm);
-      //   resizeTm = setTimeout(onResize, 200);
-      // });
+      
     }
 
     function onResize() {
