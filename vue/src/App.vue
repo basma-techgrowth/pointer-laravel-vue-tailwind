@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <v-app direction="rtl">
+    <!-- <v-app direction="rtl"> </v-app> -->
         <router-view></router-view>
-    </v-app>
+   
 </template>

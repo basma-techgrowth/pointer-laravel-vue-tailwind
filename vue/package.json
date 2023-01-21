@@ -11,6 +11,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.13",
     "@mdi/font": "^7.1.96",
+    "@vueuse/core": "^9.11.1",
     "animejs": "^3.2.1",
     "gsap": "^3.11.4",
     "perlin": "^1.0.0",
