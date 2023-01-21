@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
-import './style.css'
+import 'vuetify/dist/vuetify.min.css'
 import App from './App.vue'
-import store from './store'
+import { vuetify } from './plugins/vuetify'
 import router from './router'
+import store from './store'
+import './style.css'
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).use(vuetify).mount('#app')

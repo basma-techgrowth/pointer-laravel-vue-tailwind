@@ -379,4 +379,8 @@ class Menu {
 @import '../css/style-rtl.css';
 @import '../css/custom-fonts.css';
 @import '../css/base.css';
+
+:global(body){
+  
+}
 </style>
