@@ -1,6 +1,9 @@
 <template>
-  <article class="h-80 w-full dark:bg-white bg-gray-800 shadow rounded-md flex items-center justify-center">
-    <p>hello</p>
+  <article class="min-h-80 w-full dark:bg-white bg-gray-800 shadow rounded-md flex flex-col">
+    <div class="h-72 w-full bg-white"></div>
+    <div class="py-8 px-4">
+      <p>country 1</p>
+    </div>
   </article>
 </template>
 

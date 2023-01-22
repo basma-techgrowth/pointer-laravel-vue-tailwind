@@ -13,7 +13,7 @@
         <li class="cursor-pointer">دليل مؤشر المعلوماتية
         </li>
         <span>|</span>
-        <li class="cursor-pointer">العودة إلى الرئيسية</li>
+        <li class="cursor-pointer"><router-link to="/">العودة إلى الرئيسية</router-link></li>
       </ul>
     </div>
     <!-- mobile menu -->
@@ -70,7 +70,7 @@
       </div>
     </header>
     <!-- content & desktop side menu -->
-    <div class="min-h-full md:max-w-screen-lg flex m-auto w-full px-4">
+    <div class="min-h-full md:max-w-screen-2xl flex m-auto w-full px-4">
       <aside class="w-1/3 h-fit order-1 md:block hidden p-4 py-6">
         <div
           class="w-full h-full dark:bg-white bg-gray-800 rounded-md shadow-lg">
@@ -107,7 +107,7 @@
           </div>
           <section
             :class="[isList ? 'md:grid-cols-1 grid-cols-1' : 'md:grid-cols-3 grid-cols-2', 'rounded-md grid  gap-4 col-span-full']">
-            <slot></slot>
+            <slot :isList="isList"></slot>
           </section>
         </div>
       </div>
