@@ -1,0 +1,97 @@
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    default: null,
+  },
+  sub: {
+    type: String,
+    default: null,
+  },
+  txt: {
+    type: String,
+    default: null,
+  },
+  num: {
+    type: String,
+    default: null,
+  },
+  ranking: {
+    type: String,
+    default: null,
+  },
+  images: {
+    type: String,
+    default: 'https://images.pexels.com/photos/13704844/pexels-photo-13704844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
+})
+function getImage(pic) {
+  return new URL(pic)
+}
+</script>
+
+<template>
+  <VCard v-if="title != null && sub != null && num == null && ranking == null">
+    <div
+      class="flex-no-wrap px-2 py-4 lg:mr-0 flex-md-column lg:justify-center align-center d-flex w-100 h-100">
+      <VAvatar class="ma-3" size="80" rounded="md">
+        <img class="bg-white" :aspect-ratio="1" :src="getImage(images)" cover />
+      </VAvatar>
+      <div>
+        <VCardTitle class="text-center text-h5">
+          {{ title }}
+        </VCardTitle>
+        <VCardSubtitle class="text-error">
+          <VChip color="error" class="">
+           {{ sub }}
+          </VChip>
+          
+        </VCardSubtitle>
+      </div>
+    </div>
+  
+  </VCard>
+  <VCard v-else-if="title !=null && txt != null && num == null && ranking == null">
+    <div
+      class="flex-no-wrap justify-center flex-md-column d-flex w-100 h-100 ma-2">
+      <div>
+        <VCardTitle class="mb-2 mr-2 text-h5">
+          {{ title }}
+        </VCardTitle>
+        <VCardText class="">
+          وزارة الداخلية الكويتية هي إحدى الهيئات الحكومية في دولة الكويت، وهي الوزارة المكلفة بحماية الأمن الداخلي
+          الوزير الحالي للداخلية هو طلال خالد الأحمد الصباح منذ 5 أكتوبر 2022
+        </VCardText>
+      </div>
+    </div>
+  </VCard>
+  <VCard v-else-if="num != null && ranking == null">
+    <div
+      class="flex-no-wrap px-4 sm:justify-start md:justify-center lg:justify-center align-center d-flex w-100 h-100">
+      <div class="justify-center flex-md-column flex-sm-column d-flex align-center">
+        <VAvatar color="primary" variant="tonal" rounded="md" size="50">
+          <VCardTitle class="text-center">
+            {{ num }}
+          </VCardTitle>
+        </VAvatar>
+        <VCardText>
+          عدد الوزارات في الدولة
+        </VCardText>
+      </div>
+    </div>
+  </VCard>
+  <VCard v-else>
+    <VCardItem class="ma-4">
+      <VRow class="match-height">
+        <VCol cols="12" md="12"  class="flex items-center justify-center">
+          <VAvatar color="info" variant="tonal" rounded="md" size="50">
+            <span class="font-bold">1st</span>
+          </VAvatar>
+        </VCol>
+        <VCol cols="12" md="12"  class="flex items-center justify-center">
+          <p class="text-xl text-center text-warning"> مقارنة بالوزارات الأخرى</p>
+        </VCol>
+      </VRow>
+    </VCardItem>
+  </VCard>
+</template>
